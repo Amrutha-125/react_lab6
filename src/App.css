@@ -1,19 +1,153 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  color-scheme: light-dark;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 100vh;
+  justify-content: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('https://images.unsplash.com/photo-1520481802571-1119cd4a2d3f?w=294&dpr=2&h=294&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8NjY0OTg2ODZ8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(5px);
 }
+
+.form-container {
+  width: 320px;
+  margin: 40px auto;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 15px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  color: #262323;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.form-container:hover {
+  transform: scale(1.02);
+}
+
+.form-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0;
+  text-align: left;
+}
+
+.form-container form .form-group input,
+button {
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border: 2px solid #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.form-container form .form-group input {
+  border: 2px solid green;
+}
+
+.form-container form .form-group input:focus {
+  border-color: #4e99e5;
+  background-color: #f5faff;
+}
+
+.form-container form .form-group input.error {
+  border: 2px solid red;
+}
+
+.form-container form .form-group .error-message {
+  color: red;
+  font-size: 0.85rem;
+}
+
+.form-container form .form-group button {
+  cursor: pointer;
+  background-image: linear-gradient(to left, #4387e7, #ed2525);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  margin-top: 10px;
+  transition: background-position 0.4s ease;
+  background-size: 200% 100%;
+}
+
+.form-container form .form-group button:hover {
+  background-position: right center;
+}
+
+.form-container form .form-group button:disabled {
+  cursor: not-allowed;
+  background: gray;
+  color: #fff;
+  opacity: 0.6;
+}
+
+.form-container .result {
+  margin-top: 1rem;
+  background: rgb(170, 231, 236);
+  padding: 10px;
+  border-radius: 1rem;
+  color: #636ad3;
+  border: 2px solid;
+  position: relative;
+  font-weight: bold;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.result::after,
+.result::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  padding: 10px;
+  background-image: conic-gradient(from var(--angle), blue 20%, transparent 10%);
+  z-index: -1;
+  animation: spin 3s linear infinite;
+}
+
+.result::before {
+  filter: blur(1rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -35,6 +169,9 @@
 
 .card {
   padding: 2em;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .read-the-docs {
